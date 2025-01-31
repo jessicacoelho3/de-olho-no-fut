@@ -1,0 +1,74 @@
+const API_URL = "https://api.api-futebol.com.br/v1/";
+const API_KEY = "live_8e4a9c11683ef6a1f7e97e9e7ae0bf";
+
+// Função para buscar a tabela do Campeonato Paulista
+async function fetchTabelaCampeonato() {
+    const response = await fetch(`${API_URL}campeonatos/10/tabela`, {
+        headers: {
+            'Authorization': `Bearer ${API_KEY}`
+        }
+    });
+    const data = await response.json();
+
+    const tabelaBody = document.getElementById("tabela-body");
+
+    // Preenche a tabela com os dados recebidos
+    data.tabela.forEach((time, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${time.time.nome}</td>
+            <td>${time.pontos}</td>
+        `;
+        tabelaBody.appendChild(row);
+    });
+}
+
+// Função para buscar os jogos da Seleção Brasileira
+async function fetchSelecao() {
+    const response = await fetch(`${API_URL}selecao`, {
+        headers: {
+            'Authorization': `Bearer ${API_KEY}`
+        }
+    });
+    const data = await response.json();
+
+    const jogosSelecao = document.getElementById("jogos-selecao");
+
+    // Preenche a lista de jogos da Seleção Brasileira
+    data.jogos.forEach(jogo => {
+        const li = document.createElement("li");
+        li.textContent = `${jogo.data} - ${jogo.time_casa} vs ${jogo.time_visitante}`;
+        jogosSelecao.appendChild(li);
+    });
+}
+
+// Função para carregar notícias
+async function fetchNoticias() {
+    const response = await fetch(`${API_URL}noticias`, {
+        headers: {
+            'Authorization': `Bearer ${API_KEY}`
+        }
+    });
+    const data = await response.json();
+
+    const noticiasContainer = document.querySelector(".noticias-container");
+
+    // Preenche a seção de notícias
+    data.noticias.forEach(noticia => {
+        const noticiaElement = document.createElement("div");
+        noticiaElement.classList.add("noticia");
+        noticiaElement.innerHTML = `
+            <h3>${noticia.titulo}</h3>
+            <p>${noticia.descricao}</p>
+        `;
+        noticiasContainer.appendChild(noticiaElement);
+    });
+}
+
+// Inicializa o carregamento dos dados
+document.addEventListener("DOMContentLoaded", () => {
+    fetchTabelaCampeonato();
+    fetchSelecao();
+    fetchNoticias();
+});

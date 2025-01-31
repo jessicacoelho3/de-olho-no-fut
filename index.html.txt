@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias do Campeonato Paulista 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Campeonato Paulista 2025</h1>
+        <button class="menu-toggle">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#tabela">Tabela Geral</a></li>
+                <li><a href="#grupos">Grupos</a></li>
+                <li><a href="#noticias">Notícias</a></li>
+                <li><a href="#selecao">Seleção Brasileira</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="grupos">
+            <h2>Grupos do Campeonato</h2>
+            <div class="grupo">
+                <h3>Grupo A</h3>
+                <ul>
+                    <li>Corinthians</li>
+                    <li>Inter de Limeira</li>
+                    <li>Mirassol</li>
+                    <li>Botafogo-SP</li>
+                </ul>
+            </div>
+            <div class="grupo">
+                <h3>Grupo B</h3>
+                <ul>
+                    <li>Santos</li>
+                    <li>Red Bull Bragantino</li>
+                    <li>Portuguesa</li>
+                    <li>Guarani</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tabela">
+            <h2>Tabela Geral</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Time</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-body">
+                    <!-- Dados da API serão inseridos aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="noticias">
+            <h2>Notícias Recentes</h2>
+            <div class="noticias-container">
+                <!-- Notícias serão carregadas aqui -->
+            </div>
+        </section>
+
+        <section id="selecao">
+            <h2>Seleção Brasileira</h2>
+            <div id="selecao-info">
+                <h3>Próximos Jogos</h3>
+                <ul id="jogos-selecao">
+                    <!-- Jogos da Seleção serão carregados aqui -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Notícias Esportivas - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        const API_KEY = "live_8e4a9c11683ef6a1f7e97e9e7ae0bf";
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
